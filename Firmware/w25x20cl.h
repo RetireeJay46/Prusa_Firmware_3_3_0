@@ -42,3 +42,4 @@ extern void w25x20cl_wait_busy(void);
 }
 #endif //defined(__cplusplus)
 #endif //_W25X20CL_H
+

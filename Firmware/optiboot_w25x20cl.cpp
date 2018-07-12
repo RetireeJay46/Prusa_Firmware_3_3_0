@@ -308,3 +308,4 @@ void optiboot_w25x20cl_enter()
     putch(STK_OK);
   }
 }
+

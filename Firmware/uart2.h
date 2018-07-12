@@ -27,3 +27,4 @@ extern uint8_t uart2_rx_ok(void);
 }
 #endif //defined(__cplusplus)
 #endif //_UART2_H
+

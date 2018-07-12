@@ -192,3 +192,4 @@ uint16_t sm4_line_xyze_ui(uint16_t dx, uint16_t dy, uint16_t dz, uint16_t de)
 
 
 #endif //NEW_XYZCAL
+

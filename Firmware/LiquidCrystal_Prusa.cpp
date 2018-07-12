@@ -716,3 +716,4 @@ void LiquidCrystal_Prusa::printFloat(double number, uint8_t digits)
     remainder -= toPrint; 
   } 
 }
+

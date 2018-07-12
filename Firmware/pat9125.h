@@ -43,3 +43,4 @@ extern bool pat9125_wr_reg_verify(unsigned char addr, unsigned char data);
 
 
 #endif //PAT9125_H
+

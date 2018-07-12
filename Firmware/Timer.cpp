@@ -66,3 +66,4 @@ bool Timer<T>::expired(T msPeriod)
 
 template class Timer<unsigned long>;
 template class Timer<unsigned short>;
+

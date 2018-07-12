@@ -48,3 +48,4 @@ void bootapp_reboot_user0(uint8_t reserved)
 	wdt_enable(WDTO_15MS);
 	while(1);
 }
+

@@ -254,3 +254,4 @@ extern void planner_queue_min_reset();
 extern void planner_add_sd_length(uint16_t sdlen);
 
 extern uint16_t planner_calc_sd_length();
+

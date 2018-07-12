@@ -12,3 +12,4 @@ extern void swspi_tx(unsigned char tx);
 extern unsigned char swspi_rx();
 
 #endif //SWSPI_H
+

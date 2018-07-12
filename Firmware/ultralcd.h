@@ -313,3 +313,4 @@ static void lcd_send_status();
 static void lcd_connect_printer();
 
 #endif //ULTRALCD_H
+

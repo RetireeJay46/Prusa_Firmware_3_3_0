@@ -37,3 +37,4 @@ extern void bootapp_reboot_user0(uint8_t reserved);
 #endif //defined(__cplusplus)
 
 #endif //BOOTAPP_H
+

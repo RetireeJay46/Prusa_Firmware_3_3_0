@@ -27,3 +27,4 @@ MenuStack::Record MenuStack::pop()
 
     return m_stack[m_index];
 }
+

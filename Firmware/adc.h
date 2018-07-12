@@ -32,3 +32,4 @@ extern void adc_cycle(void);
 }
 #endif //defined(__cplusplus)
 #endif //_ADC_H
+

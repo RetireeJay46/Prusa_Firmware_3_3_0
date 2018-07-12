@@ -180,3 +180,4 @@ extern void count_xyz_details(float (&distanceMin)[2]);
 extern bool sample_z();
 
 #endif /* MESH_BED_CALIBRATION_H */
+

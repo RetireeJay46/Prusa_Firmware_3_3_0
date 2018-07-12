@@ -63,3 +63,4 @@ int rbuf_get(uint8_t* ptr)
 // TODO - optimized assembler version
 //#endif //_NO_ASM
 }
+

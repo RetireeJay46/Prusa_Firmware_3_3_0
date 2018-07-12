@@ -91,3 +91,4 @@ void adc_cycle(void)
 		adc_state |= 0x80;
 	}
 }
+

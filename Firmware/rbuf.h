@@ -25,3 +25,4 @@ extern int rbuf_get(uint8_t* ptr);
 }
 #endif //defined(__cplusplus)
 #endif //_RBUF_H
+

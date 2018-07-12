@@ -20,3 +20,4 @@ extern int swi2c_writeByte_A16(unsigned char dev_addr, unsigned short addr, unsi
 #endif //SWI2C_A16
 
 #endif //SWI2C_H
+

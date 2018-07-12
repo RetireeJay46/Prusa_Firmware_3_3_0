@@ -139,3 +139,4 @@ extern void tmc2130_set_wave(uint8_t axis, uint8_t amp, uint8_t fac1000);
 extern bool tmc2130_home_calibrate(uint8_t axis);
 
 #endif //TMC2130_H
+

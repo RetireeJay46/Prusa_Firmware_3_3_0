@@ -32,3 +32,4 @@ private:
 };
 
 #endif /* FIRMWARE_MENUSTACK_H_ */
+

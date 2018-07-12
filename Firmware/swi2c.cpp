@@ -207,3 +207,4 @@ int swi2c_writeByte_A16(unsigned char dev_addr, unsigned short addr, unsigned ch
 
 
 #endif //SWI2C
+

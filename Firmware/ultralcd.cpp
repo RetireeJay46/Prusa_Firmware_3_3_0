@@ -952,10 +952,12 @@ void lcd_commands()
 		if (lcd_commands_step == 10 && !blocks_queued() && cmd_buffer_empty())
 		{
 			enquecommand_P(PSTR("M107"));
-			enquecommand_P(PSTR("M104 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
-			enquecommand_P(PSTR("M140 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
-			enquecommand_P(PSTR("M190 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
-			enquecommand_P(PSTR("M109 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+			if (degHotend0() < EXTRUDE_MINTEMP) {  //Default to PLA if preheating was not done
+				enquecommand_P(PSTR("M104 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+				enquecommand_P(PSTR("M140 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
+				enquecommand_P(PSTR("M190 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
+				enquecommand_P(PSTR("M109 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+			};
 			enquecommand_P(PSTR("T0"));
 			enquecommand_P(_T(MSG_M117_V2_CALIBRATION));
 			enquecommand_P(PSTR("G87")); //sets calibration status
@@ -1216,10 +1218,12 @@ void lcd_commands()
 		if (lcd_commands_step == 9 && !blocks_queued() && cmd_buffer_empty())
 		{
 			enquecommand_P(PSTR("M107"));
-			enquecommand_P(PSTR("M104 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
-			enquecommand_P(PSTR("M140 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
-			enquecommand_P(PSTR("M190 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
-			enquecommand_P(PSTR("M109 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+			if (degHotend0() < EXTRUDE_MINTEMP) {  //Default to PLA if preheating was not done
+				enquecommand_P(PSTR("M104 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+				enquecommand_P(PSTR("M140 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
+				enquecommand_P(PSTR("M190 S" STRINGIFY(PLA_PREHEAT_HPB_TEMP)));
+				enquecommand_P(PSTR("M109 S" STRINGIFY(PLA_PREHEAT_HOTEND_TEMP)));
+			};
 			enquecommand_P(_T(MSG_M117_V2_CALIBRATION));
 			enquecommand_P(PSTR("G28"));
 			enquecommand_P(PSTR("G92 E0.0"));
@@ -2482,8 +2486,8 @@ static void lcd_menu_xyz_skew()
 //|01234567890123456789|
 //|Measured skew:  N/A |
 //|--------------------|
-//|Slight skew:   0.12°|
-//|Severe skew:   0.25°|
+//|Slight skew:   0.12Â°|
+//|Severe skew:   0.25Â°|
 //----------------------
     float angleDiff = eeprom_read_float((float*)(EEPROM_XYZ_CAL_SKEW));
 	lcd_printf_P(_N(
@@ -4090,12 +4094,12 @@ void lcd_toshiba_flash_air_compatibility_toggle()
 }
 
 void lcd_v2_calibration() {
-	bool loaded = lcd_show_fullscreen_message_yes_no_and_wait_P(_i("Is PLA filament loaded?"), false, true);////MSG_PLA_FILAMENT_LOADED c=20 r=2
+	bool loaded = lcd_show_fullscreen_message_yes_no_and_wait_P(_i("Is filament loaded AND Preheated?"), false, true);////MSG_PLA_FILAMENT_LOADED c=20 r=2
 	if (loaded) {
 		lcd_commands_type = LCD_COMMAND_V2_CAL;
 	}
 	else {
-		lcd_display_message_fullscreen_P(_i("Please load PLA filament first."));////MSG_PLEASE_LOAD_PLA c=20 r=4
+		lcd_display_message_fullscreen_P(_i("Please load filament AND Preheat first."));////MSG_PLEASE_LOAD_PLA c=20 r=4
 		for (int i = 0; i < 20; i++) { //wait max. 2s
 			delay_keep_alive(100);
 			if (lcd_clicked()) {
@@ -8203,3 +8207,4 @@ void copy_and_scalePID_d()
 */
 
 #endif //ULTRA_LCD
+

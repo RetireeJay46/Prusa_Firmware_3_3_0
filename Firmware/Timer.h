@@ -51,3 +51,4 @@ typedef Timer<unsigned short> ShortTimer;
 #endif
 
 #endif /* TIMER_H */
+

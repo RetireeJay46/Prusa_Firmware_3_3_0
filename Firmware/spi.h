@@ -47,3 +47,4 @@ static inline uint8_t spi_txrx(uint8_t tx)
 #endif //defined(__cplusplus)
 
 #endif //SPI_H
+
