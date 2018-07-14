@@ -8,7 +8,7 @@
 #ifdef MESH_BED_LEVELING
 #include "mesh_bed_leveling.h"
 #endif
-
+//****************************************************************************
 void _EEPROM_writeData(int &pos, uint8_t* value, uint8_t size)
 {
 	while (size--) {
@@ -29,6 +29,7 @@ void _EEPROM_writeData(int &pos, uint8_t* value, uint8_t size)
 
 }
 #define EEPROM_WRITE_VAR(pos, value) _EEPROM_writeData(pos, (uint8_t*)&value, sizeof(value))
+//**********************************************************************************************
 void _EEPROM_readData(int &pos, uint8_t* value, uint8_t size)
 {
     do
@@ -50,6 +51,7 @@ void _EEPROM_readData(int &pos, uint8_t* value, uint8_t size)
 #define EEPROM_VERSION "V2"
 
 #ifdef EEPROM_SETTINGS
+//**********************************************************************************
 void Config_StoreSettings(uint16_t offset, uint8_t level) 
 {
   char ver[4]= "000";
@@ -105,28 +107,28 @@ void Config_StoreSettings(uint16_t offset, uint8_t level)
   #endif
   EEPROM_WRITE_VAR(i,lcd_contrast);
   #ifdef FWRETRACT
-  EEPROM_WRITE_VAR(i,autoretract_enabled);
-  EEPROM_WRITE_VAR(i,retract_length);
-  #if EXTRUDERS > 1
-  EEPROM_WRITE_VAR(i,retract_length_swap);
-  #endif
-  EEPROM_WRITE_VAR(i,retract_feedrate);
-  EEPROM_WRITE_VAR(i,retract_zlift);
-  EEPROM_WRITE_VAR(i,retract_recover_length);
-  #if EXTRUDERS > 1
-  EEPROM_WRITE_VAR(i,retract_recover_length_swap);
-  #endif
-  EEPROM_WRITE_VAR(i,retract_recover_feedrate);
+	  EEPROM_WRITE_VAR(i,autoretract_enabled);
+	  EEPROM_WRITE_VAR(i,retract_length);
+	  #if EXTRUDERS > 1
+		EEPROM_WRITE_VAR(i,retract_length_swap);
+	  #endif
+	  EEPROM_WRITE_VAR(i,retract_feedrate);
+	  EEPROM_WRITE_VAR(i,retract_zlift);
+	  EEPROM_WRITE_VAR(i,retract_recover_length);
+	  #if EXTRUDERS > 1
+		EEPROM_WRITE_VAR(i,retract_recover_length_swap);
+	  #endif
+	  EEPROM_WRITE_VAR(i,retract_recover_feedrate);
   #endif
 
   // Save filament sizes
   EEPROM_WRITE_VAR(i, volumetric_enabled);
   EEPROM_WRITE_VAR(i, filament_size[0]);
   #if EXTRUDERS > 1
-  EEPROM_WRITE_VAR(i, filament_size[1]);
-  #if EXTRUDERS > 2
-  EEPROM_WRITE_VAR(i, filament_size[2]);
-  #endif
+	  EEPROM_WRITE_VAR(i, filament_size[1]);
+	  #if EXTRUDERS > 2
+		EEPROM_WRITE_VAR(i, filament_size[2]);
+	  #endif
   #endif
 
 #ifdef LIN_ADVANCE
@@ -152,6 +154,7 @@ void Config_StoreSettings(uint16_t offset, uint8_t level)
 
 
 #ifndef DISABLE_M503
+//*****************************************************************************
 void Config_PrintSettings(uint8_t level)
 {  // Always have this function, even with EEPROM_SETTINGS disabled, the current values will be shown
 	
@@ -287,6 +290,7 @@ void Config_PrintSettings(uint8_t level)
 
 
 #ifdef EEPROM_SETTINGS
+//***********************************************************************************
 bool Config_RetrieveSettings(uint16_t offset, uint8_t level)
 {
     int i=offset;
@@ -403,7 +407,7 @@ bool Config_RetrieveSettings(uint16_t offset, uint8_t level)
 	return previous_settings_retrieved;
 }
 #endif
-
+//********************************************************************************
 void Config_ResetDefault()
 {
     float tmp1[]=DEFAULT_AXIS_STEPS_PER_UNIT;
